@@ -2,6 +2,7 @@ package lib
 
 import (
 	"github.com/taubyte/go-sdk/event"
+	"time"
 )
 
 
@@ -59,8 +60,8 @@ func Next(
 
 //export generate
 func generate(e event.Event) uint32 {
-	h, err := e.HTTP()
-	if err != nil {
+	h, err0 := e.HTTP()
+	if err0 != nil {
 		return 1
 	}
 
