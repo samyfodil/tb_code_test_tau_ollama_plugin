@@ -19,6 +19,11 @@ func Pull(model string, id *uint64) uint32
 //export pull_status
 func PullStatus(id uint64, status *byte, statusCap uint32, statusLen *uint32, total *int64, completed *int64, err *byte, errCap uint32, errLen *uint32) uint32
 
+var (
+	pstatus [256]byte
+	perr    [256]byte
+)
+
 
 func printPullStatus(id uint64) (string,bool) {
 	var pstatusLen, perrLen uint32
