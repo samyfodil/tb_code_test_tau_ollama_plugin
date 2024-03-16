@@ -47,8 +47,8 @@ func printPullStatus(id uint64) (string,bool) {
 	return s, status == "success" || perrLen > 0
 }
 
-//export generate
-func generate(e event.Event) uint32 {
+//export pull
+func pull(e event.Event) uint32 {
 	h, err0 := e.HTTP()
 	if err0 != nil {
 		return 1
