@@ -39,9 +39,9 @@ func printPullStatus(id uint64) (string,bool) {
 	status := string(pstatus[0:pstatusLen])
     
 	s:=fmt.Sprintln(status)
-	s+=fmt.Println(completed, "/", total)
-	s+=fmt.Println("ERR:", string(perr[0:perrLen]))
-	s+=fmt.Println(status == "success" || perrLen > 0)
+	s+=fmt.Sprintln(completed, "/", total)
+	s+=fmt.Sprintln("ERR:", string(perr[0:perrLen]))
+	s+=fmt.Sprintln(status == "success" || perrLen > 0)
 
 	return s, status == "success" || perrLen > 0
 }
@@ -53,7 +53,7 @@ func pull(e event.Event) uint32 {
 		return 1
 	}
 
-	h.Write([]byte("pull gemma:2b-instruct"))
+	h.Write([]byte("pull gemma:2b-instruct - "))
 
 	var id uint64
 	err := Pull("gemma:2b-instruct", &id)
@@ -61,7 +61,7 @@ func pull(e event.Event) uint32 {
 		panic("failed to call pull")
 	}
 
-	h.Write([]byte(fmt.Sprint("pull id ",id)))
+	h.Write([]byte(fmt.Sprintln("id ",id)))
 
 	for {
 		s, done := printPullStatus(id)
