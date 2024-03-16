@@ -3,6 +3,7 @@ package lib
 import (
 	"github.com/taubyte/go-sdk/event"
 	"fmt"
+	"time"
 )
 
 //go:wasm-module env
