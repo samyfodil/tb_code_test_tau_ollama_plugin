@@ -76,12 +76,12 @@ func generate(e event.Event) uint32 {
 	err := Generate(&model[0], uint32(len(model)), &prompt[0], uint32(len(prompt)), &system[0], uint32(len(system)), &template[0], uint32(len(template)), nil, 0, 0, uint64(5*time.Minute), nil, 0, nil, 0, &errBuf[0], uint32(len(errBuf)), &errW, &id)
 
 	if err != 0 {
-		h.Write(string(errBuf[:errW]))
+		h.Write(errBuf[:errW])
 		return 1
 	}
 
 	if id == 0 {
-		h.Write("id == 0!")
+		h.Write([]byte("id == 0!"))
 		return 1
 	}
 
